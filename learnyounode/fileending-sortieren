@@ -1,0 +1,12 @@
+var fs = require('fs');
+var path = require('path');
+var dirPath = process.argv[2];
+var fileExt = process.argv[3];
+
+fs.readdir(dirPath, function(err, files){
+    for(var idx in files) {
+        if(path.extname(files[idx]) === '.' + fileExt) {
+            console.log(files[idx]);
+        }
+    }
+});

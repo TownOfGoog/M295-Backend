@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Delete Name</title>
+</head>
+<body>
+  <h1>Delete Name</h1>
+  <form id="deleteForm" action="/delete/name2" method="POST">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name">
+    <button type="submit">Delete</button>
+  </form>
+
+
+  <script src="index.js"></script>
+  <script>
+    const deleteForm = document.getElementById('deleteForm');
+    deleteForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const name = document.getElementById('name').value;
+      deleteName(name);
+    });
+
+    async function deleteName(name) {
+      try {
+        const response = await fetch('/delete/name2', {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+          },
+          body: `name=${encodeURIComponent(name)}`
+        });
+
+        if (response.status === 204) {
+          alert('Name deleted successfully.');
+        } else if (response.status === 404) {
+          alert('Name not found.');
+        } else {
+          alert('Failed to delete name.');
+        }
+      } catch (error) {
+        console.error(error);
+        alert('An error occurred while deleting the name.');
+      }
+    }
+  </script>
+</body>
+</html>
+//GYAAAAAAAAAAAA

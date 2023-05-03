@@ -1,7 +1,7 @@
 import express from "express";
 
 const app = express();
-const port = 3000;
+const port = 4000;
 
 // req und res stehen für request und response
 app.get("/", (req, res) => {
@@ -11,11 +11,6 @@ app.get("/", (req, res) => {
 app.get("/now", (req, res) => {
     res.send(new Date().toISOString());
 });
-
-app.listen(port, () => {
-    console.log("Server ist gestartet :)");
-});
-
 app.get("/zli", (req, res) => {
     window.location.replace("zli.ch");
 });
@@ -39,7 +34,7 @@ app.get("/teapot", (req, res) => {
 });
 
 app.get("/user-agent", (req, res) => {
-    res.send.req.header(user-agent)
+    res.send(req.header["user-agent"])
 });
 
 app.get("/secret", (req, res) => {
@@ -53,3 +48,48 @@ app.get("/xml", (req, res) => {
 app.get("/me", (req, res) => {
     res.sendFile("/workspaces/M295 Backend/express_helloworld/me.json")
 });
+
+
+app.get('/now2', (req, res) => {
+  const timezone = req.query.tz || 'CET';
+  const currentTime = new Date().toLocaleString('en-US', { timeZone: timezone });
+
+  res.send(`Current time in ${timezone}: ${currentTime}`);
+});
+
+
+
+
+// Middleware für das Parsen von URL-Codierung und JSON
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+
+// Beispiel-Namensliste
+let names = ['Alice', 'Bob', 'Charlie'];
+
+// POST-Endpunkt /name2
+app.post('/name22', (req, res) => {
+  const nameToAdd = req.body.name; // Name aus dem Formular
+
+  // Überprüfen, ob der Name bereits in der Liste vorhanden ist
+  if (names.includes(nameToAdd)) {
+    res.status(409).send('Name already exists'); // Name existiert bereits
+  } else {
+    names.push(nameToAdd); // Name zur Liste hinzufügen
+    res.sendStatus(201); // Statuscode 201 (Created) zurückgeben
+  }
+});
+
+
+
+
+
+app.listen(3000, () => {
+  console.log('Server is running on port 3000');
+});
+
+app.get("/namez", (req, res) => {
+    res.sendFile('/workspaces/M295 Backend/express_helloworld/nameform.html')
+});
+
+//WAAAAAAAAAAAAAAAAAAAAA

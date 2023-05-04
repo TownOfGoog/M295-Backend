@@ -2,6 +2,7 @@ import express from "express";
 
 const app = express();
 const port = 4000;
+app.use(express.static('public'));
 
 // req und res stehen für request und response
 app.get("/", (req, res) => {
@@ -84,8 +85,8 @@ app.post('/name22', (req, res) => {
 
 
 
-app.listen(3000, () => {
-  console.log('Server is running on port 3000');
+app.listen(4000, () => {
+  console.log('Server is running on port 4000');
 });
 
 app.get("/namez", (req, res) => {
@@ -93,3 +94,38 @@ app.get("/namez", (req, res) => {
 });
 
 //WAAAAAAAAAAAAAAAAAAAAA
+
+app.get("/Secret2", (req, res) => {
+    const pass = req.query.tz
+    if (pass == "a") {
+    res.sendFile('/workspaces/M295 Backend/express_helloworld/nameform.html')
+    } else {
+        res.sendStatus(401)
+    }
+});
+
+
+
+
+
+
+async function fetchJoke(category) {
+  try {
+    const response = await axios.get(`https://api.chucknorris.io/jokes/random?category=sport`);
+    return response.data;
+  } catch (error) {
+    throw new Error(`Failed to fetch GitHub repositories for ${username}: ${error.message}`);
+  }
+}
+
+
+
+// Usage example
+
+
+  app.get("/Chuck", (req, res) => {
+
+    const joke = response.data.value;
+    res.send(joke);
+    console.log(joke);
+});

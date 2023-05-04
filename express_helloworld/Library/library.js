@@ -127,6 +127,17 @@ export function remove(isbn){
 //-- .. .- -- .. .- -- .. .- -- .. .- -- .. .- -- .. .- -- .. .- -- .. .- -- .. .- -- .. .- -- .. .- -- .. .- -- .. .- -- .. .-
 
 
+
+
+
+
+
+
+
+
+
+
+
 function findALLLends(){
     return lends
 }
@@ -192,4 +203,98 @@ export function insertLend (book) {
 }
 
 //req.query.VARIABLE  für die URL sache
+// -- .. .- -- .. .- -- .. .- -- .. .- -- .. .- -- .. .- -- .. .- -- .. .- -- .. .- -- .. .- -- .. .- -- .. .- -- . .- -- .. .-
+
+
+
+
+
+
+
+
+
+
+
+//
+//
+//import session from "express-session"
+//
+//app.use(session({
+//  secret: 'supersecret',
+//	resave: false,
+//	saveUninitialized: true,
+//  cookie: {}
+//}))
+//
+//app.get('/', function (request, response, _) {
+//  // request.session is the object that holds the information of this specific session
+//  request.session.views = (request.session.views || 0) + 1
+//  console.log(request.session)
+//
+//  response.end(request.session.views + ' views')
+//})
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//// npm install express express-session
+//
+//
+//app.use(express.json())
+//app.use(session({
+//  secret: 'supersecret',
+//	resave: false,
+//	saveUninitialized: false,
+//  cookie: {}
+//}))
+//
+//// Caution: this is only an example. NEVER store credentials in code!
+//const secretAdminCredentials = { email: "desk@library.example", password: "m295" }
+//
+//app.post('/login', function (request, response) {
+//	const { email, password } = request.body
+//
+//	// Check the credentials against store
+//	if (email?.toLowerCase() == secretAdminCredentials.email && password == secretAdminCredentials.password) {
+//
+//		// Link email to session
+//		request.session.email = email
+//
+//		return response.status(200).json({ email: request.session.email })
+//	}
+//
+//  return response.status(401).json({ error: "Invalid credentials" })
+//})
+//
+//app.get('/verify', function (request, response) {
+//	
+//	// Check if email is set in session
+//	if (request.session.email) {
+//		return response.status(200).json({ email: request.session.email })
+//	}
+//
+//  return response.status(401).json({ error: "Not logged in" })
+//})
+//
+//app.delete('/logout', function (request, response) {
+//
+//	// Check if email is set in session
+//	if (request.session.email) {
+//
+//		// Reset link of session to email
+//		request.session.email = null
+//
+//		return response.status(204).send()
+//	}
+//
+//  return response.status(401).json({ error: "Not logged in" })
+//})
+//
+//
 

@@ -191,5 +191,5 @@ export function insertLend (book) {
     lends = [... lends, book];
 }
 
-
+//req.query.VARIABLE  für die URL sache
 

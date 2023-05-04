@@ -141,7 +141,7 @@ app.get("/lend/:lendid", (req, res) =>{
 })
 
 
-app.put("/lend/:lendid", (req, res) => {
+app.patch("/lend/:lendid", (req, res) => {
     let lendid = req.params.lendid
     var currentDate = new Date();
     var currentDateJson = currentDate.toJSON();
